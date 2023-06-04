@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class PacienteAuthenticationService {
-  apiUri = '/api/clinica/pacientes';
+  apiUri = 'http://localhost:3000/api/clinica';
   authSubject = new BehaviorSubject(false);
   private token: string | null = null; // Corregido: inicializar como null
 

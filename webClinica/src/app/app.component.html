@@ -10,23 +10,14 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <ng-container *ngIf="!adminAuthenticationService.loggedIn(); else loggedIn">
-          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
-        </ng-container>
-        <ng-template #loggedIn>
-          <li class="nav-item">
-              <a class="nav-link" style="cursor: pointer;" (click)="adminAuthenticationService.logout()">
-                  Logout
-              </a>
-          </li>
-      </ng-template>
+          <ng-container *ngIf="!adminAuthenticationService.loggedIn() && !doctorAuthenticationService.loggedIn() && !pacienteAuthenticationService.loggedIn(); else loggedIn">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          </ng-container>
+          <ng-template #loggedIn>
+            <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
+          </ng-template>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
+
       </ul>
     </div>
   </div>
@@ -43,3 +34,4 @@
   <p style="color: antiquewhite;">
       ___________________________________________________________________________________________</p>
 </div>
+<router-outlet></router-outlet>
