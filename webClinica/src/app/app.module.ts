@@ -1,18 +1,47 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { TokenInterceptorService } from './services/tokeninterceptor.service';
+import { DoctorTokenInterceptorService } from './services/doctortokeninterceptor.service';
+import { PacienteTokenInterceptorService } from './services/pacientetokeninterceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true,},
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: DoctorTokenInterceptorService,
+    multi: true,},
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: PacienteTokenInterceptorService,
+    multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
