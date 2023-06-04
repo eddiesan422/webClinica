@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DoctorService {
-apiUri = '/api/clinica/doctors';
+apiUri = 'http://localhost:3000/api/clinica/doctors';
 httpOptions = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private httpClient:HttpClient) { }
   getDoctor(): Observable<any> {

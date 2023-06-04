@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AdminService {
-apiUri = '/api/clinica/admins';
+apiUri = 'http://localhost:3000/api/clinica/admins';
 httpOptions = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private httpClient:HttpClient) { }
   getAdmins(): Observable<any> {

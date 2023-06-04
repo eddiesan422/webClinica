@@ -1,10 +1,10 @@
 export interface Paciente{
 _id?: string,
-apellidos: string,
-edad: number,
-telefono: number,
-historial: string,
-medicina:{
+apellidos?: string,
+edad?: number,
+telefono?: number,
+historial?: string,
+medicina?:{
     medicinaDescripcion:{
         nombre: string,
         descripcion: string,
@@ -12,7 +12,7 @@ medicina:{
         cantidad: number,
     }
 },
-cita:Date,
+cita?:Date,
 correo: string,
 password: string,
 }

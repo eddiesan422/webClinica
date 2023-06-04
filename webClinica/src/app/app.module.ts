@@ -13,10 +13,22 @@ import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptorService } from './services/tokeninterceptor.service';
 import { DoctorTokenInterceptorService } from './services/doctortokeninterceptor.service';
 import { PacienteTokenInterceptorService } from './services/pacientetokeninterceptor.service';
+import { AdministradorComponent } from './components/administrador/administrador.component';
+import { ListAdminsComponent } from './components/list-admins/list-admins.component';
+import { ListDoctorComponent } from './components/list-doctors/list-doctors.component';
+import { ListPacientesComponent } from './components/list-pacientes/list-pacientes.component';
+import { DoctorComponent } from './components/doctor/doctor.component';
+import { PacienteComponent } from './components/paciente/paciente.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    AdministradorComponent,
+    ListAdminsComponent,
+    ListDoctorComponent,
+    ListPacientesComponent,
+    DoctorComponent,
+    PacienteComponent
   ],
   imports: [
     BrowserModule,
