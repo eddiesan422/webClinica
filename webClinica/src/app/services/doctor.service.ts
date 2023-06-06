@@ -15,4 +15,11 @@ httpOptions = new HttpHeaders({'Content-Type': 'application/json'});
   getDoctorInfo() {
     return this.httpClient.get(this.apiUri + '/private');
   }
+
+  newDoctor(data: any): Observable<any> {
+    return this.httpClient.post<any>(
+      this.apiUri,
+      data,
+      {});
+  }
 }

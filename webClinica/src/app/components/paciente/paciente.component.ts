@@ -20,11 +20,11 @@ export class PacienteComponent {
   pacientesList: any = [];
 
   ngOnInit() {
-    this.getAllAnimals();
+    this.getAllPacientes();
   }
 
 
-  getAllAnimals() {
+  getAllPacientes() {
     this.pacientesService.getPacientes().subscribe(
       (data: {}) => {
         this.pacientesList = data

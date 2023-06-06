@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PacienteService } from 'src/app/services/paciente.service';
 import { take } from 'rxjs';
 import { formatDate } from '@angular/common';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 @Component({
   selector: 'app-administrador',
@@ -25,7 +26,18 @@ export class AdministradorComponent {
     password: ''
   })
 
+  doctorList: any = [];
+  doctorForm: any = this.formBuilder.group({
+    nombres: '',
+    apellidos: '',
+    telefono: 0,
+    especialidad: '',
+    correo: '',
+    password: ''
+  })
+
   constructor(private pacientesService: PacienteService,
+    private doctorService: DoctorService,
     private formBuilder: FormBuilder,
     private router: Router,
     private toastr: ToastrService) {
@@ -33,8 +45,8 @@ export class AdministradorComponent {
   newPacienteEntry() {
     this.pacientesService.newPaciente(this.pacientesForm.value).subscribe(
       () => {
-        //Redirigiendo a la ruta actual /animal y recargando la ventana
-        this.router.navigate(['/animal']).then(() => {
+
+        this.router.navigate(['/administrador']).then(() => {
           this.newMessage('Registro exitoso');
         })
       }
@@ -45,6 +57,39 @@ export class AdministradorComponent {
       .onTap
       .pipe(take(1))
       .subscribe(() => window.location.reload());
+  }
+  newDoctorEntry() {
+    this.doctorService.newDoctor(this.doctorForm.value).subscribe(
+      () => {
+
+        this.router.navigate(['/administrador']).then(() => {
+          this.newMessage('Registro exitoso');
+        })
+      }
+    );
+  }
+
+  ngOnInit() {
+    this.getAllPacientes();
+    this.getAllDoctors();
+  }
+
+
+  getAllPacientes() {
+    this.pacientesService.getPacientes().subscribe(
+      (data: {}) => {
+        this.pacientesList = data
+      }
+    );
+  }
+
+
+  getAllDoctors() {
+    this.doctorService.getDoctor().subscribe(
+      (data: {}) => {
+        this.doctorList = data
+      }
+    );
   }
 
 

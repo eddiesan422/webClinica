@@ -1,1 +1,25 @@
-<p>doctor works!</p>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Telefono</th>
+          <th scrope="col">Historial</th>
+          <th scrope="col">Correo</th>
+          <th scrope="col">Contraseña</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pacientesList">
+          <td>{{item.nombres}}</td>
+          <td>{{item.apellidos}}</td>
+          <td>{{item.edad}}</td>
+          <td>{{item.telefono}}</td>
+          <td>{{item.historial}}</td>
+          <td>{{item.correo}}</td>
+          <td>{{item.password}}</td>
+        </tr>
+    </table>
+  </div>
