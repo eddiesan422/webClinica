@@ -1,25 +1,93 @@
-<div class="table-responsive">
-    <table class="table table-striped table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Apellidos</th>
-          <th scope="col">Edad</th>
-          <th scope="col">Telefono</th>
-          <th scrope="col">Historial</th>
-          <th scrope="col">Correo</th>
-          <th scrope="col">Contraseña</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of pacientesList">
-          <td>{{item.nombres}}</td>
-          <td>{{item.apellidos}}</td>
-          <td>{{item.edad}}</td>
-          <td>{{item.telefono}}</td>
-          <td>{{item.historial}}</td>
-          <td>{{item.correo}}</td>
-          <td>{{item.password}}</td>
-        </tr>
-    </table>
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar paciente</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="card p-2" (ngSubmit)="newPacienteEntry()" [formGroup]="pacientesForm">
+          <div class="mb-3">
+            <label for="nombres" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombres" aria-describedby="emailHelp"
+              placeholder="Nombre del paciente" formControlName="nombres" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" placeholder="Apellido del paciente"
+              formControlName="apellidos" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="edad" class="form-label">Edad</label>
+            <input type="number" class="form-control" id="edad" placeholder="Edad del paciente" formControlName="edad"
+              ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input type="number" class="form-control" id="telefono" placeholder="Telefono" formControlName="telefono"
+              ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="historial" class="form-label">Historial</label>
+            <input type="text" class="form-control" id="historial" placeholder="historial del paciente"
+              formControlName="historial" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="medicina" class="form-label">Medicina</label>
+            <input type="text" class="form-control" id="medicia" placeholder="Medicina del paciente"
+              formControlName="medicina" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="text" class="form-control" id="Correo" placeholder="Correo del paciente"
+              formControlName="correo" ngModel>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="text" class="form-control" id="password" placeholder="contraseñadel paciente"
+              formControlName="password" ngModel>
+          </div>
+          <div class="input-group justify-content-center md-12">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
   </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+  Registrar paciente
+</button>
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Telefono</th>
+        <th scrope="col">Historial</th>
+        <th scrope="col">Medicina</th>
+        <th scrope="col">Correo</th>
+        <th scrope="col">Contraseña</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of pacientesList">
+        <td>{{item.nombres}}</td>
+        <td>{{item.apellidos}}</td>
+        <td>{{item.edad}}</td>
+        <td>{{item.telefono}}</td>
+        <td>{{item.historial}}</td>
+        <td>{{item.medicina}}</td>
+        <td>{{item.correo}}</td>
+        <td>{{item.password}}</td>
+      </tr>
+  </table>
+</div>

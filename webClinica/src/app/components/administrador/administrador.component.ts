@@ -22,6 +22,7 @@ export class AdministradorComponent {
     edad: 0,
     telefono: 0,
     historial: '',
+    medicina:'',
     correo: '',
     password: ''
   })

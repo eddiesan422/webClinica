@@ -1,0 +1,12 @@
+{
+    "/api/clinica": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": false
+    },
+    "/api/clinica/doctors": {
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": false
+    }
+}

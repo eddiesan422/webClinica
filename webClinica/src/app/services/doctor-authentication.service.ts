@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DoctorAuthenticationService {
-  apiUri = 'http://localhost:3000/api/clinica';
+  apiUri = 'http://localhost:3000/api/clinica/doctors';
   authSubject = new BehaviorSubject(false);
   private token: string | null = null; // Corregido: inicializar como null
 
@@ -26,7 +26,7 @@ export class DoctorAuthenticationService {
   }
 
   register(doctor: Doctor): Observable<DoctorJwtres> {
-    return this.httpClient.post<DoctorJwtres>(this.apiUri + '/doctors', doctor).pipe(
+    return this.httpClient.post<DoctorJwtres>(this.apiUri, doctor).pipe(
       tap((res: DoctorJwtres) => {
         if (res) {
           this.saveToken(res.access_Token, res.expires_In); // Actualizado: usar 'token' en lugar de 'accessToken'
@@ -36,7 +36,7 @@ export class DoctorAuthenticationService {
   }
 
   login(doctor: Doctor): Observable<DoctorJwtres> {
-    return this.httpClient.post<DoctorJwtres>(this.apiUri + '/doctors/login', doctor).pipe(
+    return this.httpClient.post<DoctorJwtres>(this.apiUri + '/login', doctor).pipe(
       tap((res: DoctorJwtres) => {
         if (res) {
           this.saveToken(res.access_Token, res.expires_In); // Actualizado: usar 'token' en lugar de 'accessToken'

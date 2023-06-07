@@ -19,6 +19,16 @@ export class DoctorComponent {
   }
 
   pacientesList: any = [];
+  pacientesForm: any = this.formBuilder.group({
+    nombres: '',
+    apellidos: '',
+    edad: 0,
+    telefono: 0,
+    historial: '',
+    medicina:'',
+    correo: '',
+    password: ''
+  })
 
   ngOnInit() {
     this.getAllPacientes();
@@ -31,6 +41,23 @@ export class DoctorComponent {
         this.pacientesList = data
       }
     );
+  }
+
+  newPacienteEntry() {
+    this.pacientesService.newPaciente(this.pacientesForm.value).subscribe(
+      () => {
+
+        this.router.navigate(['/doctor']).then(() => {
+          this.newMessage('Registro exitoso');
+        })
+      }
+    );
+  }
+  newMessage(messageText: string) {
+    this.toastr.success('Clic aquí para actualizar la lista', messageText)
+      .onTap
+      .pipe(take(1))
+      .subscribe(() => window.location.reload());
   }
 
 }

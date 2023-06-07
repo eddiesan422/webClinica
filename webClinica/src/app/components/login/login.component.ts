@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   onLogin(event: Event): void {
     event.preventDefault();
   
-    const correo = this.correo.toLowerCase();
+    const correo = this.correo;
     const password = this.password;
   
     const dominio = correo.split('@')[1]; // Extraer el dominio del correo
